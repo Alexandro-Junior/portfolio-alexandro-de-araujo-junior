@@ -95,6 +95,9 @@ Também participo de **monitoria acadêmica**, experiência que fortalece minhas
 ```
 portfolio-alexandro-araujo/
 │
+├──cv/
+│   ├── 
+│
 ├── README.md                                         ← Apresentação principal (você está aqui)
 │
 ├── projeto-laboratorio-de-classificacao-visual/      ← IA: Classificação Visual & Viés Algorítmico
