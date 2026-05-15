@@ -96,7 +96,7 @@ Também participo de **monitoria acadêmica**, experiência que fortalece minhas
 portfolio-alexandro-araujo/
 │
 ├──cv/
-│   ├── 
+│   ├── Curriculo_Alexandro_Araujo.pdf
 │
 ├── README.md                                         ← Apresentação principal (você está aqui)
 │
