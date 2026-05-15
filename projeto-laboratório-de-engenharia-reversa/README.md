@@ -142,4 +142,4 @@ Este projeto é parte da **Atividade 2 (AT2)** da disciplina de Laboratório de 
 
 ---
 
-[🔙 Voltar ao portfólio](https://github.com/profdiegocarvalho/portfolio-arthur-correia-carvalho)
+[Voltar ao início](https://github.com/Alexandro-Junior/portfolio-alexandro-de-araujo-junior/tree/main)
