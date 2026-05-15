@@ -148,4 +148,4 @@ Distribuído sob licença **MIT**. Consulte o arquivo `LICENSE` para mais inform
 
 ---
 
-[⬆ Voltar ao início](https://github.com/Alexandro-Junior/portfolio-alexandro-de-araujo-junior/tree/main)
+[Voltar ao início](https://github.com/Alexandro-Junior/portfolio-alexandro-de-araujo-junior/tree/main)
