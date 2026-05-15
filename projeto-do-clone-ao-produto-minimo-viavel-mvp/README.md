@@ -41,4 +41,4 @@ O projeto garante que cada código gerado seja legível e visualmente atraente:
 4. Execute o servidor de desenvolvimento: `npm run dev`.
 
 ---
-[Voltar ao início](https://github.com/alexandrodearaujojunior/qr-craft)
+[Voltar ao início](https://github.com/Alexandro-Junior/portfolio-alexandro-de-araujo-junior/tree/main)
