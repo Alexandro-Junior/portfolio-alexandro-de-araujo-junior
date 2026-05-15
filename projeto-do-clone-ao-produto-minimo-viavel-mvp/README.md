@@ -13,7 +13,8 @@ O **QR Craft** é uma plataforma inovadora para criação de QR Codes que combin
 O dashboard oferece ferramentas para criação de QR Codes **Dinâmicos** e **Estáticos**, integrando templates inteligentes para WiFi e WhatsApp com logos centralizados automaticamente. A plataforma gerencia todo o ciclo de vida do código, desde o design até o rastreamento via redirecionamento dinâmico.
  
 ---
-![Dashboard QR Craft](./imagens/img1.png)
+![Dashboard QR Craft](./Imagens/img1.png)
+
 *Figura 1: Painel principal do QR Craft com ferramentas de criação e estilização artística.*
  
 ## 🚀 Tecnologias Utilizadas
@@ -30,7 +31,8 @@ O projeto foi estruturado para garantir máxima conversão e facilidade de uso:
 * **Modo de Edição Pro:** Interface dedicada que separa a criação da manutenção, garantindo que usuários editem seus códigos sem gerar duplicatas desnecessárias.
 * **Estética Diferenciada:** Temas exclusivos (Sketch, Ink, Marker) que fogem do padrão quadrado genérico do mercado.
  
-![Personalização e Estilo](./imagens/img2.png)
+![Personalização e Estilo](./Imagens/img2.png)
+
 *Figura 2: Detalhe das ferramentas de customização, mostrando a flexibilidade de cores e formas.*
  
 ## 🔧 Como Executar
@@ -39,7 +41,8 @@ O projeto foi estruturado para garantir máxima conversão e facilidade de uso:
 3. Instale as dependências: `npm install`.
 4. Execute o servidor de desenvolvimento: `npm run dev`.
  
-![Gerenciamento de Dados](./imagens/img3.png)
+![Gerenciamento de Dados](./Imagens/img3.png)
+
 *Figura 3: Seção de QR Codes Salvos, ilustrando a integração em tempo real com o banco de dados Firebase.*
  
 ---
