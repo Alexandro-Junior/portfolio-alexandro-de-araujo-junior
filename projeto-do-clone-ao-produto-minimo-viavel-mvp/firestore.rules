@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {userId} (matches auth.uid)
+    // Fields:
+    //   - uid: string (required)
+    //   - email: string (required)
+    //   - displayName: string
+    //   - photoURL: string
+    //   - createdAt: timestamp
+    //
+    // Collection: users/{userId}/qrCodes
+    // Document ID: auto-generated
+    // Fields:
+    //   - uid: string (required, matches auth.uid)
+    //   - name: string
+    //   - config: map (required)
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // Collection: dynamicLinks
+    // Document ID: auto-generated
+    // Fields:
+    //   - targetUrl: string (required)
+    //   - ownerUid: string (required, matches auth.uid)
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email']) &&
+             data.uid is string &&
+             data.email is string &&
+             data.email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidQRCode(data) {
+      return data.keys().hasAll(['uid', 'config', 'createdAt']) &&
+             data.uid == request.auth.uid &&
+             data.config is map;
+    }
+
+    function isValidDynamicLink(data) {
+      return data.keys().hasAll(['targetUrl', 'ownerUid', 'createdAt']) &&
+             data.targetUrl is string &&
+             data.targetUrl.size() > 0 &&
+             data.targetUrl.size() < 2048 &&
+             data.ownerUid == request.auth.uid;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /dynamicLinks/{linkId} {
+      allow read: if true; // Publicly accessible for redirection
+      allow create: if isAuthenticated() && isValidDynamicLink(request.resource.data);
+      allow update: if isAuthenticated() && resource.data.ownerUid == request.auth.uid && isValidDynamicLink(request.resource.data);
+      allow delete: if isAuthenticated() && resource.data.ownerUid == request.auth.uid;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data);
+      
+      match /qrCodes/{qrCodeId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidQRCode(request.resource.data);
+        allow update: if isOwner(userId) && isValidQRCode(request.resource.data);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

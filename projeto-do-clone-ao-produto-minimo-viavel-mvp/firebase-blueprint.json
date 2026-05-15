@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "qrCode": {
+      "title": "QR Code",
+      "description": "Saved QR code configuration",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "config": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "config", "createdAt"]
+    },
+    "dynamicLink": {
+      "title": "Dynamic Link",
+      "description": "A redirect link for dynamic QR codes",
+      "type": "object",
+      "properties": {
+        "targetUrl": { "type": "string" },
+        "ownerUid": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["targetUrl", "ownerUid", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profile documents"
+    },
+    "/users/{userId}/qrCodes/{qrCodeId}": {
+      "schema": "qrCode",
+      "description": "User's saved QR codes"
+    },
+    "/dynamicLinks/{linkId}": {
+      "schema": "dynamicLink",
+      "description": "Publicly accessible redirect links"
+    }
+  }
+}

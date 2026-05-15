@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-hand: "Patrick Hand", cursive;
+    --radius: 0px;
+
+    --color-background: #fdfcf8;
+    --color-foreground: #1a1a1a;
+    --color-border: #d1d5db;
+    --color-input: #d1d5db;
+    --color-ring: #94a3b8;
+    
+    --color-ink: #2d3436;
+    --color-paper: #fdfcf8;
+    --color-sketch-blue: #0984e3;
+    
+    --color-watercolor-pink: #ffb7b2;
+    --color-watercolor-blue: #b2e2f2;
+    --color-watercolor-green: #b2f2bb;
+    --color-watercolor-yellow: #f2eeb2;
+    --color-watercolor-purple: #d1b2f2;
+}
+
+:root {
+    --background: oklch(0.99 0.01 90);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-paper text-ink font-sans;
+    background-image: 
+      radial-gradient(at 0% 0%, var(--color-watercolor-pink) 0, transparent 50%),
+      radial-gradient(at 50% 0%, var(--color-watercolor-blue) 0, transparent 50%),
+      radial-gradient(at 100% 0%, var(--color-watercolor-green) 0, transparent 50%),
+      radial-gradient(at 0% 100%, var(--color-watercolor-yellow) 0, transparent 50%),
+      radial-gradient(at 100% 100%, var(--color-watercolor-purple) 0, transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-hand;
+  }
+}
+
+@layer utilities {
+  .border-sketch {
+    border: 2px solid currentColor;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  }
+  
+  .border-sketch-sm {
+    border: 1.5px solid currentColor;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  }
+
+  .bg-doodle {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 Q 30 5, 50 10 T 90 10' stroke='%23d1d5db' fill='none' stroke-width='0.5'/%3E%3Cpath d='M10 90 Q 30 95, 50 90 T 90 90' stroke='%23d1d5db' fill='none' stroke-width='0.5'/%3E%3C/svg%3E");
+  }
+
+  .filter-sketch {
+    filter: url('#sketch-filter');
+  }
+
+  .filter-ink {
+    filter: url('#ink-filter');
+  }
+}
+
+/* SVG Filters for hand-drawn effect */
+.svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
